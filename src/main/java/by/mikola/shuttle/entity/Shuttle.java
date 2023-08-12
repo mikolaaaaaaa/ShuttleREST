@@ -11,14 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Shuttle {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  private String driver;
-  private int capacity;
-  private String licensePlate;
-  private String model;
-
-  // Getters and Setters
+    private String driver;
+    private int capacity;
+    private String licensePlate;
+    private String model;
 }

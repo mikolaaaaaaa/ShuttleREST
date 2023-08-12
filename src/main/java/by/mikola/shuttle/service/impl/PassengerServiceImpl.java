@@ -3,19 +3,22 @@ package by.mikola.shuttle.service.impl;
 import by.mikola.shuttle.entity.Passenger;
 import by.mikola.shuttle.repository.PassengerRepository;
 import by.mikola.shuttle.service.PassengerService;
-import org.slf4j.Logger;import org.slf4j.LoggerFactory;import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class PassengerServiceImpl implements PassengerService {
 
-  @Autowired private PassengerRepository passengerRepository;
-  Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final PassengerRepository passengerRepository;
 
-  @Override
-  public List<Passenger> getAllPassengers() {
-      logger.info("{}",passengerRepository.findAll());
+    @Override
+    public List<Passenger> getAllPassengers() {
+        log.info("{}", passengerRepository.findAll());
         return passengerRepository.findAll();
     }
 

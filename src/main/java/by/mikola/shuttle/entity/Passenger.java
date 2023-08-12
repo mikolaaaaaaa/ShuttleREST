@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 @Entity
@@ -12,17 +13,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Passenger {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  private String name;
-  private String email;
-  private String phone;
+    private String name;
+    private String email;
+    private String phone;
 
-  @OneToMany(cascade = CascadeType.ALL)
-  @JoinColumn(name = "passenger_id")
-  private List<Ticket> tickets;
-
-  // Getters and Setters
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "passenger_id")
+    private List<Ticket> tickets;
 }

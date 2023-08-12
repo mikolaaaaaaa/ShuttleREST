@@ -2,18 +2,20 @@ package by.mikola.shuttle.controller;
 
 import by.mikola.shuttle.entity.Stop;
 import by.mikola.shuttle.service.StopService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/stops")
+@RequestMapping("/v1/stops")
+@RequiredArgsConstructor
 public class StopController {
 
-  @Autowired private StopService stopService;
+    private final StopService stopService;
 
-  @GetMapping
-  public List<Stop> getAllStops() {
+    @GetMapping
+    public List<Stop> getAllStops() {
         return stopService.getAllStops();
     }
 

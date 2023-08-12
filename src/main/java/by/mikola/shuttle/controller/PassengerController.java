@@ -2,18 +2,21 @@ package by.mikola.shuttle.controller;
 
 import by.mikola.shuttle.entity.Passenger;
 import by.mikola.shuttle.service.PassengerService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/passengers")
+@RequestMapping("/v1/passengers")
+@RequiredArgsConstructor
 public class PassengerController {
 
-  @Autowired private PassengerService passengerService;
+    private final PassengerService passengerService;
 
-  @GetMapping
-  public List<Passenger> getAllPassengers() {
+    @GetMapping
+    public List<Passenger> getAllPassengers() {
         return passengerService.getAllPassengers();
     }
 
@@ -28,8 +31,8 @@ public class PassengerController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePassenger(@PathVariable Long id) {
         passengerService.deletePassenger(id);
     }
 }
-

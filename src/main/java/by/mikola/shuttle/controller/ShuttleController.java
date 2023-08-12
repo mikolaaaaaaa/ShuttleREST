@@ -2,18 +2,20 @@ package by.mikola.shuttle.controller;
 
 import by.mikola.shuttle.entity.Shuttle;
 import by.mikola.shuttle.service.ShuttleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/shuttles")
+@RequestMapping("/v1/shuttles")
+@RequiredArgsConstructor
 public class ShuttleController {
 
-  @Autowired private ShuttleService shuttleService;
+    private final ShuttleService shuttleService;
 
-  @GetMapping
-  public List<Shuttle> getAllShuttles() {
+    @GetMapping
+    public List<Shuttle> getAllShuttles() {
         return shuttleService.getAllShuttles();
     }
 
@@ -32,4 +34,3 @@ public class ShuttleController {
         shuttleService.deleteShuttle(id);
     }
 }
-

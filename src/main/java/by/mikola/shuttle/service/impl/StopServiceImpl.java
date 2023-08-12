@@ -3,16 +3,19 @@ package by.mikola.shuttle.service.impl;
 import by.mikola.shuttle.entity.Stop;
 import by.mikola.shuttle.repository.StopRepository;
 import by.mikola.shuttle.service.StopService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class StopServiceImpl implements StopService {
 
-  @Autowired private StopRepository stopRepository;
+    private final StopRepository stopRepository;
 
-  @Override
-  public List<Stop> getAllStops() {
+    @Override
+    public List<Stop> getAllStops() {
         return stopRepository.findAll();
     }
 
@@ -31,4 +34,3 @@ public class StopServiceImpl implements StopService {
         stopRepository.deleteById(id);
     }
 }
-

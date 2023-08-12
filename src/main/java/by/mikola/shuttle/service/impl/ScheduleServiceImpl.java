@@ -3,17 +3,19 @@ package by.mikola.shuttle.service.impl;
 import by.mikola.shuttle.entity.Schedule;
 import by.mikola.shuttle.repository.ScheduleRepository;
 import by.mikola.shuttle.service.ScheduleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ScheduleServiceImpl implements ScheduleService {
 
-  @Autowired private ScheduleRepository scheduleRepository;
+    private final ScheduleRepository scheduleRepository;
 
-  @Override
-  public List<Schedule> getAllSchedules() {
+    @Override
+    public List<Schedule> getAllSchedules() {
         return scheduleRepository.findAll();
     }
 
@@ -32,4 +34,3 @@ public class ScheduleServiceImpl implements ScheduleService {
         scheduleRepository.deleteById(id);
     }
 }
-

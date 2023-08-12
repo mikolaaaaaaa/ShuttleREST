@@ -2,18 +2,20 @@ package by.mikola.shuttle.controller;
 
 import by.mikola.shuttle.entity.Schedule;
 import by.mikola.shuttle.service.ScheduleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/schedules")
+@RequestMapping("/v1/schedules")
+@RequiredArgsConstructor
 public class ScheduleController {
 
-  @Autowired private ScheduleService scheduleService;
+    private final ScheduleService scheduleService;
 
-  @GetMapping
-  public List<Schedule> getAllSchedules() {
+    @GetMapping
+    public List<Schedule> getAllSchedules() {
         return scheduleService.getAllSchedules();
     }
 

@@ -2,18 +2,20 @@ package by.mikola.shuttle.controller;
 
 import by.mikola.shuttle.entity.Route;
 import by.mikola.shuttle.service.RouteService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/routes")
+@RequestMapping("/v1/routes")
+@RequiredArgsConstructor
 public class RouteController {
 
-  @Autowired private RouteService routeService;
+    private final RouteService routeService;
 
-  @GetMapping
-  public List<Route> getAllRoutes() {
+    @GetMapping
+    public List<Route> getAllRoutes() {
         return routeService.getAllRoutes();
     }
 
@@ -32,4 +34,3 @@ public class RouteController {
         routeService.deleteRoute(id);
     }
 }
-

@@ -3,17 +3,19 @@ package by.mikola.shuttle.service.impl;
 import by.mikola.shuttle.entity.Ticket;
 import by.mikola.shuttle.repository.TicketRepository;
 import by.mikola.shuttle.service.TicketService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TicketServiceImpl implements TicketService {
 
-  @Autowired private TicketRepository ticketRepository;
+    private final TicketRepository ticketRepository;
 
-  @Override
-  public List<Ticket> getAllTickets() {
+    @Override
+    public List<Ticket> getAllTickets() {
         return ticketRepository.findAll();
     }
 
@@ -32,4 +34,3 @@ public class TicketServiceImpl implements TicketService {
         ticketRepository.deleteById(id);
     }
 }
-

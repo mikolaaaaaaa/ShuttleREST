@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ShuttleRepository extends JpaRepository<Shuttle, Long> {
-  // Можно добавить дополнительные методы запросов, если нужно
+
 }

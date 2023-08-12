@@ -1,6 +1,8 @@
 # Настройки для H2 Database
 spring:
-
+  server:
+    servlet:
+      contextPath: /api
   h2:
     console.enabled: true
   datasource:
@@ -10,10 +12,9 @@ spring:
     password: ""
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-
-springdoc:
-  api-docs:
-    path: /api-docs
-  swagger-ui:
-    path: /swagger-ui.html
-    enabled: true
+  springdoc:
+    api-docs:
+      path: /api-docs
+    swagger-ui:
+      path: /swagger-ui.html
+      enabled: true

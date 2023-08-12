@@ -11,22 +11,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Ticket {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @ManyToOne
-  @JoinColumn(name = "passenger_id")
-  private Passenger passenger;
+    @ManyToOne
+    @JoinColumn(name = "passenger_id")
+    private Passenger passenger;
 
-  @ManyToOne
-  @JoinColumn(name = "shuttle_id")
-  private Shuttle shuttle;
+    @ManyToOne
+    @JoinColumn(name = "shuttle_id")
+    private Shuttle shuttle;
 
-  private String departureStop;
-  private String destinationStop;
-  private String departureTime;
-  private String arrivalTime;
-
-  // Getters and Setters
+    private String departureStop;
+    private String destinationStop;
+    private String departureTime;
+    private String arrivalTime;
 }
