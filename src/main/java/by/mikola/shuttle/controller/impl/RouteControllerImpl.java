@@ -35,10 +35,10 @@ public class RouteControllerImpl implements RouteController {
     }
 
     @Override
-    public Route addRoute(RouteCreateRequest createRequest) {
+    public RouteResponse addRoute(RouteCreateRequest createRequest) {
         Driver driver = driverService.getDriverById(createRequest.getDriverId());
         RouteDTO routeDto = mapper.toDto(createRequest, driver);
-        return routeService.saveRoute(routeDto);
+        return mapper.toResponse(routeService.saveRoute(routeDto));
     }
 
     @Override

@@ -20,7 +20,7 @@ public interface DriverController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Driver addDriver(@Valid @RequestBody DriverCreateRequest createRequest);
+    DriverResponse addDriver(@Valid @RequestBody DriverCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

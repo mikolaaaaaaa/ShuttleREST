@@ -17,7 +17,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class StopControllerImpl implements StopController {
-
     private final StopService stopService;
     private final RouteService routeService;
     private final StopMapper mapper;
@@ -37,10 +36,10 @@ public class StopControllerImpl implements StopController {
     }
 
     @Override
-    public Stop addStop(StopCreateRequest createRequest) {
+    public StopResponse addStop(StopCreateRequest createRequest) {
         Route route = routeService.getRouteById(createRequest.getRouteId());
         StopDTO stopDto = mapper.toDto(createRequest, route);
-        return stopService.saveStop(stopDto);
+        return mapper.toResponse(stopService.saveStop(stopDto));
     }
 
     @Override

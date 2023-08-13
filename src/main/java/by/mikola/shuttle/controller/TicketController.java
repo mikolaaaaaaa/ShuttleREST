@@ -20,7 +20,7 @@ public interface TicketController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Ticket addTicket(@Valid @RequestBody TicketCreateRequest createRequest);
+    TicketResponse addTicket(@Valid @RequestBody TicketCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

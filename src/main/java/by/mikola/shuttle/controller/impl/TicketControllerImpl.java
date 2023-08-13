@@ -21,7 +21,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class TicketControllerImpl implements TicketController {
-
     private final TicketService ticketService;
     private final StopService stopService;
     private final ShuttleService shuttleService;
@@ -43,13 +42,13 @@ public class TicketControllerImpl implements TicketController {
     }
 
     @PostMapping
-    public Ticket addTicket(@RequestBody TicketCreateRequest createRequest) {
+    public TicketResponse addTicket(@RequestBody TicketCreateRequest createRequest) {
         Passenger passenger = passengerService.getPassengerById(createRequest.getPassengerId());
         Shuttle shuttle = shuttleService.getShuttleById(createRequest.getShuttleId());
         Stop departureStop = stopService.getStopById(createRequest.getDepartureStopId());
         Stop destinationStop = stopService.getStopById(createRequest.getDestinationStopId());
         TicketDTO ticketDto = mapper.toDto(createRequest, passenger, shuttle, departureStop, destinationStop);
-        return ticketService.saveTicket(ticketDto);
+        return mapper.toResponse(ticketService.saveTicket(ticketDto));
     }
 
     @DeleteMapping("/{id}")

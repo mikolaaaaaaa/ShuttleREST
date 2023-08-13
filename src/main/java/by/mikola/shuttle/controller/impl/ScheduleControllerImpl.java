@@ -31,15 +31,14 @@ public class ScheduleControllerImpl implements ScheduleController {
 
     @Override
     public ScheduleResponse getScheduleById(Long id) {
-
         return mapper.toResponse(scheduleService.getScheduleById(id));
     }
 
     @Override
-    public Schedule addSchedule(ScheduleCreateRequest createRequest) {
+    public ScheduleResponse addSchedule(ScheduleCreateRequest createRequest) {
         Route route = routeService.getRouteById(createRequest.getRouteId());
         ScheduleDTO scheduleDto = mapper.toDto(createRequest, route);
-        return scheduleService.saveSchedule(scheduleDto);
+        return mapper.toResponse(scheduleService.saveSchedule(scheduleDto));
     }
 
     @Override

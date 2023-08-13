@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class ShuttleControllerImpl implements ShuttleController {
-
     private final ShuttleService service;
     private final ShuttleMapper mapper;
 
@@ -32,8 +31,8 @@ public class ShuttleControllerImpl implements ShuttleController {
     }
 
     @Override
-    public Shuttle addShuttle(ShuttleCreateRequest createRequest) {
-        return service.saveShuttle(mapper.toDto(createRequest));
+    public ShuttleResponse addShuttle(ShuttleCreateRequest createRequest) {
+        return mapper.toResponse(service.saveShuttle(mapper.toDto(createRequest)));
     }
 
     @Override

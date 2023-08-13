@@ -20,7 +20,7 @@ public interface ScheduleController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Schedule addSchedule(@Valid @RequestBody ScheduleCreateRequest createRequest);
+    ScheduleResponse addSchedule(@Valid @RequestBody ScheduleCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -21,7 +21,7 @@ public interface StopController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Stop addStop(@Valid @RequestBody StopCreateRequest createRequest);
+    StopResponse addStop(@Valid @RequestBody StopCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

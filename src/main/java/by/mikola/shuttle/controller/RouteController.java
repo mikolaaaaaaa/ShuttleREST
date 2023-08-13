@@ -20,7 +20,7 @@ public interface RouteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Route addRoute(@Valid @RequestBody RouteCreateRequest createRequest);
+    RouteResponse addRoute(@Valid @RequestBody RouteCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

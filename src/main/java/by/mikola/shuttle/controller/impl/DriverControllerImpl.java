@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class DriverControllerImpl implements DriverController {
-
     private final DriverService driverService;
     private final DriverMapper mapper;
 
@@ -32,8 +31,8 @@ public class DriverControllerImpl implements DriverController {
     }
 
     @Override
-    public Driver addDriver(DriverCreateRequest createRequest) {
-        return driverService.saveDriver(mapper.toDto(createRequest));
+    public DriverResponse addDriver(DriverCreateRequest createRequest) {
+        return mapper.toResponse(driverService.saveDriver(mapper.toDto(createRequest)));
     }
 
     @Override

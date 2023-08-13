@@ -20,7 +20,7 @@ public interface PassengerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Passenger addPassenger(@Valid @RequestBody PassengerCreateRequest createRequest);
+    PassengerResponse addPassenger(@Valid @RequestBody PassengerCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

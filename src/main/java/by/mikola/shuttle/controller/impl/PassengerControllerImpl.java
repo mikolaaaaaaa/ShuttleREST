@@ -31,8 +31,8 @@ public class PassengerControllerImpl implements PassengerController {
     }
 
     @Override
-    public Passenger addPassenger(PassengerCreateRequest createRequest) {
-        return passengerService.savePassenger(mapper.toDto(createRequest));
+    public PassengerResponse addPassenger(PassengerCreateRequest createRequest) {
+        return mapper.toResponse(passengerService.savePassenger(mapper.toDto(createRequest)));
     }
 
     @Override

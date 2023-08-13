@@ -20,7 +20,7 @@ public interface ShuttleController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Shuttle addShuttle(@Valid @RequestBody ShuttleCreateRequest createRequest);
+    ShuttleResponse addShuttle(@Valid @RequestBody ShuttleCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
