@@ -1,36 +1,28 @@
 package by.mikola.shuttle.controller;
 
+import by.mikola.shuttle.dto.shuttle.ShuttleCreateRequest;
+import by.mikola.shuttle.dto.shuttle.ShuttleResponse;
 import by.mikola.shuttle.entity.Shuttle;
-import by.mikola.shuttle.service.ShuttleService;
-import lombok.RequiredArgsConstructor;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+
 @RequestMapping("/v1/shuttles")
-@RequiredArgsConstructor
-public class ShuttleController {
-
-    private final ShuttleService shuttleService;
-
+public interface ShuttleController {
     @GetMapping
-    public List<Shuttle> getAllShuttles() {
-        return shuttleService.getAllShuttles();
-    }
+    List<ShuttleResponse> getAllShuttles();
 
     @GetMapping("/{id}")
-    public Shuttle getShuttleById(@PathVariable Long id) {
-        return shuttleService.getShuttleById(id);
-    }
+    ShuttleResponse getShuttleById(@PathVariable Long id);
 
     @PostMapping
-    public void addShuttle(@RequestBody Shuttle shuttle) {
-        shuttleService.saveShuttle(shuttle);
-    }
+    @ResponseStatus(HttpStatus.CREATED)
+    Shuttle addShuttle(@Valid @RequestBody ShuttleCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
-    public void deleteShuttle(@PathVariable Long id) {
-        shuttleService.deleteShuttle(id);
-    }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void deleteShuttle(@PathVariable Long id);
 }

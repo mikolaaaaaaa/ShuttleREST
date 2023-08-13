@@ -1,9 +1,9 @@
-package by.mikola.shuttle.dto;
+package by.mikola.shuttle.dto.passenger;
 
 import lombok.Data;
 
 @Data
-public class PassengerDTO {
+public class PassengerResponse {
     private Long id;
     private String name;
     private String email;

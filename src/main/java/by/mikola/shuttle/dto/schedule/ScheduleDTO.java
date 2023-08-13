@@ -1,10 +1,11 @@
-package by.mikola.shuttle.dto;
+package by.mikola.shuttle.dto.schedule;
 
+import by.mikola.shuttle.entity.Route;
 import lombok.Data;
 
 @Data
 public class ScheduleDTO {
-    private Long id;
     private String departureTime;
     private String arrivalTime;
+    private Route route;
 }

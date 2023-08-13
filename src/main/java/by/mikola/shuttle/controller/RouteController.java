@@ -1,36 +1,28 @@
 package by.mikola.shuttle.controller;
 
+import by.mikola.shuttle.dto.route.RouteCreateRequest;
+import by.mikola.shuttle.dto.route.RouteResponse;
 import by.mikola.shuttle.entity.Route;
-import by.mikola.shuttle.service.RouteService;
-import lombok.RequiredArgsConstructor;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @RequestMapping("/v1/routes")
-@RequiredArgsConstructor
-public class RouteController {
-
-    private final RouteService routeService;
+public interface RouteController {
 
     @GetMapping
-    public List<Route> getAllRoutes() {
-        return routeService.getAllRoutes();
-    }
+    List<RouteResponse> getAllRoutes();
 
     @GetMapping("/{id}")
-    public Route getRouteById(@PathVariable Long id) {
-        return routeService.getRouteById(id);
-    }
+    RouteResponse getRouteById(@PathVariable Long id);
 
     @PostMapping
-    public void addRoute(@RequestBody Route route) {
-        routeService.saveRoute(route);
-    }
+    @ResponseStatus(HttpStatus.CREATED)
+    Route addRoute(@Valid @RequestBody RouteCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
-    public void deleteRoute(@PathVariable Long id) {
-        routeService.deleteRoute(id);
-    }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void deleteRoute(@PathVariable Long id);
 }

@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Table(name = "passenger")
 @Data
@@ -17,11 +15,13 @@ public class Passenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 30)
     private String name;
+
+    @Column(unique = true, nullable = false, length = 50)
     private String email;
+
+    @Column(unique = true, nullable = false, length = 30)
     private String phone;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "passenger_id")
-    private List<Ticket> tickets;
 }

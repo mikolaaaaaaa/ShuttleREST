@@ -1,36 +1,28 @@
 package by.mikola.shuttle.controller;
 
+import by.mikola.shuttle.dto.ticket.TicketCreateRequest;
+import by.mikola.shuttle.dto.ticket.TicketResponse;
 import by.mikola.shuttle.entity.Ticket;
-import by.mikola.shuttle.service.TicketService;
-import lombok.RequiredArgsConstructor;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @RequestMapping("/v1/tickets")
-@RequiredArgsConstructor
-public class TicketController {
-
-    private final TicketService ticketService;
+public interface TicketController {
 
     @GetMapping
-    public List<Ticket> getAllTickets() {
-        return ticketService.getAllTickets();
-    }
+    List<TicketResponse> getAllTickets();
 
     @GetMapping("/{id}")
-    public Ticket getTicketById(@PathVariable Long id) {
-        return ticketService.getTicketById(id);
-    }
+    TicketResponse getTicketById(@PathVariable Long id);
 
     @PostMapping
-    public void addTicket(@RequestBody Ticket ticket) {
-        ticketService.saveTicket(ticket);
-    }
+    @ResponseStatus(HttpStatus.CREATED)
+    Ticket addTicket(@Valid @RequestBody TicketCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
-    public void deleteTicket(@PathVariable Long id) {
-        ticketService.deleteTicket(id);
-    }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void deleteTicket(@PathVariable Long id);
 }

@@ -1,6 +1,9 @@
 package by.mikola.shuttle.service.impl;
 
+import by.mikola.shuttle.dto.passenger.PassengerDTO;
 import by.mikola.shuttle.entity.Passenger;
+import by.mikola.shuttle.exception.NotFoundException;
+import by.mikola.shuttle.mapper.PassengerMapper;
 import by.mikola.shuttle.repository.PassengerRepository;
 import by.mikola.shuttle.service.PassengerService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +18,7 @@ import java.util.List;
 public class PassengerServiceImpl implements PassengerService {
 
     private final PassengerRepository passengerRepository;
+    private final PassengerMapper mapper;
 
     @Override
     public List<Passenger> getAllPassengers() {
@@ -24,12 +28,13 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     public Passenger getPassengerById(Long id) {
-        return passengerRepository.findById(id).orElse(null);
+        return passengerRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Passenger with id %s not found".formatted(id)));
     }
 
     @Override
-    public void savePassenger(Passenger passenger) {
-        passengerRepository.save(passenger);
+    public Passenger savePassenger(PassengerDTO passenger) {
+        return passengerRepository.save(mapper.toEntity(passenger));
     }
 
     @Override

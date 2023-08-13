@@ -1,6 +1,6 @@
 package by.mikola.shuttle.service;
 
-import by.mikola.shuttle.dto.ShuttleDTO;
+import by.mikola.shuttle.dto.shuttle.ShuttleDTO;
 import by.mikola.shuttle.entity.Shuttle;
 
 import java.util.List;
@@ -10,7 +10,7 @@ public interface ShuttleService {
 
     Shuttle getShuttleById(Long id);
 
-    void saveShuttle(ShuttleDTO shuttle);
+    Shuttle saveShuttle(ShuttleDTO shuttle);
 
     void deleteShuttle(Long id);
 }

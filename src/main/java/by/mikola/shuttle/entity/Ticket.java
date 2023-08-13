@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalTime;
+
 @Entity
 @Table(name = "ticket")
 @Data
@@ -16,15 +18,27 @@ public class Ticket {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "passenger_id")
+    @JoinColumn(name = "passenger_id", nullable = false)
     private Passenger passenger;
 
     @ManyToOne
-    @JoinColumn(name = "shuttle_id")
+    @JoinColumn(name = "shuttle_id", nullable = false)
     private Shuttle shuttle;
 
-    private String departureStop;
-    private String destinationStop;
-    private String departureTime;
-    private String arrivalTime;
+    @ManyToOne
+    @JoinColumn(name = "departure_stop_id", nullable = false)
+    private Stop departureStop;
+
+    @ManyToOne
+    @JoinColumn(name = "destination_stop_id", nullable = false)
+    private Stop destinationStop;
+
+    @Column(nullable = false, length = 10)
+    @Temporal(TemporalType.TIME)
+    private LocalTime departureTime;
+
+    @Column(nullable = false, length = 10)
+    @Temporal(TemporalType.TIME)
+    private LocalTime arrivalTime;
+
 }

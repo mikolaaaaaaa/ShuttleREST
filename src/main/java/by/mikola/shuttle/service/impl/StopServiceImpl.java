@@ -1,6 +1,9 @@
 package by.mikola.shuttle.service.impl;
 
+import by.mikola.shuttle.dto.stop.StopDTO;
 import by.mikola.shuttle.entity.Stop;
+import by.mikola.shuttle.exception.NotFoundException;
+import by.mikola.shuttle.mapper.StopMapper;
 import by.mikola.shuttle.repository.StopRepository;
 import by.mikola.shuttle.service.StopService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +16,7 @@ import java.util.List;
 public class StopServiceImpl implements StopService {
 
     private final StopRepository stopRepository;
+    private final StopMapper mapper;
 
     @Override
     public List<Stop> getAllStops() {
@@ -21,12 +25,13 @@ public class StopServiceImpl implements StopService {
 
     @Override
     public Stop getStopById(Long id) {
-        return stopRepository.findById(id).orElse(null);
+        return stopRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Stop with id %s not found".formatted(id)));
     }
 
     @Override
-    public void saveStop(Stop stop) {
-        stopRepository.save(stop);
+    public Stop saveStop(StopDTO stop) {
+        return stopRepository.save(mapper.toEntity(stop));
     }
 
     @Override

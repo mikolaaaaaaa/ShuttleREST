@@ -1,6 +1,6 @@
 package by.mikola.shuttle.service;
 
-import by.mikola.shuttle.dto.RouteDTO;
+import by.mikola.shuttle.dto.route.RouteDTO;
 import by.mikola.shuttle.entity.Route;
 
 import java.util.List;
@@ -10,7 +10,7 @@ public interface RouteService {
 
     Route getRouteById(Long id);
 
-    void saveRoute(RouteDTO route);
+    Route saveRoute(RouteDTO route);
 
     void deleteRoute(Long id);
 }

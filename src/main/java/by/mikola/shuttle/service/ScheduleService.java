@@ -1,6 +1,6 @@
 package by.mikola.shuttle.service;
 
-import by.mikola.shuttle.dto.ScheduleDTO;
+import by.mikola.shuttle.dto.schedule.ScheduleDTO;
 import by.mikola.shuttle.entity.Schedule;
 
 import java.util.List;
@@ -10,7 +10,7 @@ public interface ScheduleService {
 
     Schedule getScheduleById(Long id);
 
-    void saveSchedule(ScheduleDTO schedule);
+    Schedule saveSchedule(ScheduleDTO schedule);
 
     void deleteSchedule(Long id);
 }

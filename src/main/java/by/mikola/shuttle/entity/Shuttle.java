@@ -15,8 +15,13 @@ public class Shuttle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String driver;
-    private int capacity;
+    @Column(nullable = false)
+    private Integer capacity;
+
+    @Column(unique = true, nullable = false, length = 50)
     private String licensePlate;
+
+    @Column(nullable = false)
     private String model;
+
 }

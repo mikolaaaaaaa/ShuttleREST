@@ -1,6 +1,9 @@
 package by.mikola.shuttle.service.impl;
 
+import by.mikola.shuttle.dto.schedule.ScheduleDTO;
 import by.mikola.shuttle.entity.Schedule;
+import by.mikola.shuttle.exception.NotFoundException;
+import by.mikola.shuttle.mapper.ScheduleMapper;
 import by.mikola.shuttle.repository.ScheduleRepository;
 import by.mikola.shuttle.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +16,7 @@ import java.util.List;
 public class ScheduleServiceImpl implements ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
+    private final ScheduleMapper mapper;
 
     @Override
     public List<Schedule> getAllSchedules() {
@@ -21,12 +25,14 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public Schedule getScheduleById(Long id) {
-        return scheduleRepository.findById(id).orElse(null);
+        return scheduleRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Schedule with id %s not found".formatted(id)));
     }
 
     @Override
-    public void saveSchedule(Schedule schedule) {
-        scheduleRepository.save(schedule);
+    public Schedule saveSchedule(ScheduleDTO scheduleDto) {
+        Schedule schedule = mapper.toEntity(scheduleDto);
+        return scheduleRepository.save(schedule);
     }
 
     @Override

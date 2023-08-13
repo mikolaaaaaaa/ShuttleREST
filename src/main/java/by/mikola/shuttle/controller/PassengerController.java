@@ -1,38 +1,28 @@
 package by.mikola.shuttle.controller;
 
+import by.mikola.shuttle.dto.passenger.PassengerCreateRequest;
+import by.mikola.shuttle.dto.passenger.PassengerResponse;
 import by.mikola.shuttle.entity.Passenger;
-import by.mikola.shuttle.service.PassengerService;
-import lombok.RequiredArgsConstructor;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @RequestMapping("/v1/passengers")
-@RequiredArgsConstructor
-public class PassengerController {
-
-    private final PassengerService passengerService;
+public interface PassengerController {
 
     @GetMapping
-    public List<Passenger> getAllPassengers() {
-        return passengerService.getAllPassengers();
-    }
+    List<PassengerResponse> getAllPassengers();
 
     @GetMapping("/{id}")
-    public Passenger getPassengerById(@PathVariable Long id) {
-        return passengerService.getPassengerById(id);
-    }
+    PassengerResponse getPassengerById(@PathVariable Long id);
 
     @PostMapping
-    public void addPassenger(@RequestBody Passenger passenger) {
-        passengerService.savePassenger(passenger);
-    }
+    @ResponseStatus(HttpStatus.CREATED)
+    Passenger addPassenger(@Valid @RequestBody PassengerCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletePassenger(@PathVariable Long id) {
-        passengerService.deletePassenger(id);
-    }
+    void deletePassenger(@PathVariable Long id);
 }

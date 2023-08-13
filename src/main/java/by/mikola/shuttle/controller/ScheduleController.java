@@ -1,36 +1,28 @@
 package by.mikola.shuttle.controller;
 
+import by.mikola.shuttle.dto.schedule.ScheduleCreateRequest;
+import by.mikola.shuttle.dto.schedule.ScheduleResponse;
 import by.mikola.shuttle.entity.Schedule;
-import by.mikola.shuttle.service.ScheduleService;
-import lombok.RequiredArgsConstructor;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @RequestMapping("/v1/schedules")
-@RequiredArgsConstructor
-public class ScheduleController {
-
-    private final ScheduleService scheduleService;
+public interface ScheduleController {
 
     @GetMapping
-    public List<Schedule> getAllSchedules() {
-        return scheduleService.getAllSchedules();
-    }
+    List<ScheduleResponse> getAllSchedules();
 
     @GetMapping("/{id}")
-    public Schedule getScheduleById(@PathVariable Long id) {
-        return scheduleService.getScheduleById(id);
-    }
+    ScheduleResponse getScheduleById(@PathVariable Long id);
 
     @PostMapping
-    public void addSchedule(@RequestBody Schedule schedule) {
-        scheduleService.saveSchedule(schedule);
-    }
+    @ResponseStatus(HttpStatus.CREATED)
+    Schedule addSchedule(@Valid @RequestBody ScheduleCreateRequest createRequest);
 
     @DeleteMapping("/{id}")
-    public void deleteSchedule(@PathVariable Long id) {
-        scheduleService.deleteSchedule(id);
-    }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void deleteSchedule(@PathVariable Long id);
 }

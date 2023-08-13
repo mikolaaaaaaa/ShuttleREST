@@ -15,9 +15,13 @@ public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 30)
     private String name;
+
+    @Column(unique = true, nullable = false, length = 50)
     private String email;
+
+    @Column(unique = true, nullable = false, length = 30)
     private String phone;
-    private String licenseNumber;
 
 }

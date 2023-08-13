@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Table(name = "route")
 @Data
@@ -17,16 +15,14 @@ public class Route {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 30)
     private String name;
-    private String description;
-    private boolean isActive;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "route_id")
-    private List<Stop> stops;
+    @Column(nullable = false)
+    private Boolean isActive;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "route_id")
-    private List<Schedule> schedule;
+    @ManyToOne
+    @JoinColumn(name = "driver.id", nullable = false)
+    private Driver driver;
 
 }

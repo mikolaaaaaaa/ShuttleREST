@@ -15,6 +15,14 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 10)
     private String departureTime;
+
+    @Column(nullable = false, length = 10)
     private String arrivalTime;
+
+    @ManyToOne
+    @JoinColumn(name = "route_id")
+    private Route route;
+
 }

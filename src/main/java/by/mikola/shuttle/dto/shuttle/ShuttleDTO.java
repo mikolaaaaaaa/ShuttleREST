@@ -1,12 +1,10 @@
-package by.mikola.shuttle.dto;
+package by.mikola.shuttle.dto.shuttle;
 
 import lombok.Data;
 
 @Data
 public class ShuttleDTO {
-    private Long id;
-    private String driver;
-    private int capacity;
+    private Integer capacity;
     private String licensePlate;
     private String model;
 }

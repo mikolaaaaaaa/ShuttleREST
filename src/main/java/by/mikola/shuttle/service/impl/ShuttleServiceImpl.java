@@ -1,6 +1,9 @@
 package by.mikola.shuttle.service.impl;
 
+import by.mikola.shuttle.dto.shuttle.ShuttleDTO;
 import by.mikola.shuttle.entity.Shuttle;
+import by.mikola.shuttle.exception.NotFoundException;
+import by.mikola.shuttle.mapper.ShuttleMapper;
 import by.mikola.shuttle.repository.ShuttleRepository;
 import by.mikola.shuttle.service.ShuttleService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +16,7 @@ import java.util.List;
 public class ShuttleServiceImpl implements ShuttleService {
 
     private final ShuttleRepository shuttleRepository;
+    private final ShuttleMapper mapper;
 
     @Override
     public List<Shuttle> getAllShuttles() {
@@ -21,12 +25,13 @@ public class ShuttleServiceImpl implements ShuttleService {
 
     @Override
     public Shuttle getShuttleById(Long id) {
-        return shuttleRepository.findById(id).orElse(null);
+        return shuttleRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Shuttle with id %s not found".formatted(id)));
     }
 
     @Override
-    public void saveShuttle(Shuttle shuttle) {
-        shuttleRepository.save(shuttle);
+    public Shuttle saveShuttle(ShuttleDTO shuttle) {
+        return shuttleRepository.save(mapper.toEntity(shuttle));
     }
 
     @Override

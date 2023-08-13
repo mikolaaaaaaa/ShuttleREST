@@ -15,7 +15,16 @@ public class Stop {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 50)
     private String name;
-    private double latitude;
-    private double longitude;
+
+    @Column(nullable = false)
+    private Double latitude;
+
+    @Column(nullable = false)
+    private Double longitude;
+
+    @ManyToOne
+    @JoinColumn(name = "route_id")
+    private Route route;
 }
