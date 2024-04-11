@@ -3,7 +3,6 @@ package by.mikola.shuttle.controller.impl;
 import by.mikola.shuttle.controller.ShuttleController;
 import by.mikola.shuttle.dto.shuttle.ShuttleCreateRequest;
 import by.mikola.shuttle.dto.shuttle.ShuttleResponse;
-import by.mikola.shuttle.entity.Shuttle;
 import by.mikola.shuttle.mapper.ShuttleMapper;
 import by.mikola.shuttle.service.ShuttleService;
 import lombok.RequiredArgsConstructor;

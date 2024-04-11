@@ -2,7 +2,6 @@ package by.mikola.shuttle.controller;
 
 import by.mikola.shuttle.dto.driver.DriverCreateRequest;
 import by.mikola.shuttle.dto.driver.DriverResponse;
-import by.mikola.shuttle.entity.Driver;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

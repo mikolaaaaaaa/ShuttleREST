@@ -5,7 +5,6 @@ import by.mikola.shuttle.dto.route.RouteCreateRequest;
 import by.mikola.shuttle.dto.route.RouteDTO;
 import by.mikola.shuttle.dto.route.RouteResponse;
 import by.mikola.shuttle.entity.Driver;
-import by.mikola.shuttle.entity.Route;
 import by.mikola.shuttle.mapper.RouteMapper;
 import by.mikola.shuttle.service.DriverService;
 import by.mikola.shuttle.service.RouteService;

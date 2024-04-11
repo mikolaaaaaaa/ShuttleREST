@@ -41,4 +41,14 @@ public class PassengerServiceImpl implements PassengerService {
     public void deletePassenger(Long id) {
         passengerRepository.deleteById(id);
     }
+
+    @Override
+    public Passenger updatePassenger(PassengerDTO passenger) {
+        var existedPassenger = passengerRepository.findByEmail(passenger.getEmail());
+        var updatedPassenger = mapper.toEntity(passenger);
+        if (existedPassenger != null) {
+            updatedPassenger.setId(existedPassenger.getId());
+        }
+        return passengerRepository.save(updatedPassenger);
+    }
 }

@@ -5,7 +5,6 @@ import by.mikola.shuttle.dto.stop.StopCreateRequest;
 import by.mikola.shuttle.dto.stop.StopDTO;
 import by.mikola.shuttle.dto.stop.StopResponse;
 import by.mikola.shuttle.entity.Route;
-import by.mikola.shuttle.entity.Stop;
 import by.mikola.shuttle.mapper.StopMapper;
 import by.mikola.shuttle.service.RouteService;
 import by.mikola.shuttle.service.StopService;

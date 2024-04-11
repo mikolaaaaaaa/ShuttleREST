@@ -3,7 +3,7 @@ package by.mikola.shuttle.controller.impl;
 import by.mikola.shuttle.controller.PassengerController;
 import by.mikola.shuttle.dto.passenger.PassengerCreateRequest;
 import by.mikola.shuttle.dto.passenger.PassengerResponse;
-import by.mikola.shuttle.entity.Passenger;
+import by.mikola.shuttle.dto.passenger.PassengerUpdateRequest;
 import by.mikola.shuttle.mapper.PassengerMapper;
 import by.mikola.shuttle.service.PassengerService;
 import lombok.RequiredArgsConstructor;
@@ -38,5 +38,10 @@ public class PassengerControllerImpl implements PassengerController {
     @Override
     public void deletePassenger(Long id) {
         passengerService.deletePassenger(id);
+    }
+
+    @Override
+    public PassengerResponse updatePassenger(PassengerUpdateRequest updateRequest) {
+        return mapper.toResponse(passengerService.updatePassenger(mapper.toDto(updateRequest)));
     }
 }

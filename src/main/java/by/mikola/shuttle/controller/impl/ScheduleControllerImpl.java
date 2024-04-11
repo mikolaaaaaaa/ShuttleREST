@@ -5,7 +5,6 @@ import by.mikola.shuttle.dto.schedule.ScheduleCreateRequest;
 import by.mikola.shuttle.dto.schedule.ScheduleDTO;
 import by.mikola.shuttle.dto.schedule.ScheduleResponse;
 import by.mikola.shuttle.entity.Route;
-import by.mikola.shuttle.entity.Schedule;
 import by.mikola.shuttle.mapper.ScheduleMapper;
 import by.mikola.shuttle.service.RouteService;
 import by.mikola.shuttle.service.ScheduleService;

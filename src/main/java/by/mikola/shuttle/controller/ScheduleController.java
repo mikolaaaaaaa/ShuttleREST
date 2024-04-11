@@ -2,7 +2,6 @@ package by.mikola.shuttle.controller;
 
 import by.mikola.shuttle.dto.schedule.ScheduleCreateRequest;
 import by.mikola.shuttle.dto.schedule.ScheduleResponse;
-import by.mikola.shuttle.entity.Schedule;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

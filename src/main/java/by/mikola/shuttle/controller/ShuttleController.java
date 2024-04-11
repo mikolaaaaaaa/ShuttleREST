@@ -2,7 +2,6 @@ package by.mikola.shuttle.controller;
 
 import by.mikola.shuttle.dto.shuttle.ShuttleCreateRequest;
 import by.mikola.shuttle.dto.shuttle.ShuttleResponse;
-import by.mikola.shuttle.entity.Shuttle;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

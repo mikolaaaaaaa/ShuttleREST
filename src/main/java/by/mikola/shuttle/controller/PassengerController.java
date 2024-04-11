@@ -2,7 +2,7 @@ package by.mikola.shuttle.controller;
 
 import by.mikola.shuttle.dto.passenger.PassengerCreateRequest;
 import by.mikola.shuttle.dto.passenger.PassengerResponse;
-import by.mikola.shuttle.entity.Passenger;
+import by.mikola.shuttle.dto.passenger.PassengerUpdateRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,4 +25,8 @@ public interface PassengerController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deletePassenger(@PathVariable Long id);
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    PassengerResponse updatePassenger(@Valid @RequestBody PassengerUpdateRequest updateRequest);
 }

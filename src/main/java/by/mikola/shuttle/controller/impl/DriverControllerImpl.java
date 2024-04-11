@@ -3,7 +3,6 @@ package by.mikola.shuttle.controller.impl;
 import by.mikola.shuttle.controller.DriverController;
 import by.mikola.shuttle.dto.driver.DriverCreateRequest;
 import by.mikola.shuttle.dto.driver.DriverResponse;
-import by.mikola.shuttle.entity.Driver;
 import by.mikola.shuttle.mapper.DriverMapper;
 import by.mikola.shuttle.service.DriverService;
 import lombok.RequiredArgsConstructor;
