@@ -44,25 +44,18 @@
    ./mvnw install
    ```
 
-4. Создайте Docker-образ базы данных PostgreSQL для приложения, используя Dockerfile, находящийся в
-   директории `docker/postgres`:
+4. Запустите Docker Compose с помощью команды:
 
    ```bash
-   docker build -t shuttle ./docker/postgresql/
+   docker-compose up
    ```
 
-5. Запустите Docker-контейнер с базой данных, используя ранее созданный Docker-образ:
+5. При необходимости отредактируйте файлы конфигурации проекта в `src/main/resources/application.yml`
 
-   ```bash
-   docker run -d -p 5433:5432 --name shuttle shuttle
-   ```
-
-6. При необходимости отредактируйте файлы конфигурации проекта в `src/main/resources/application.yml`
-
-7. Запустите приложение с помощью Maven Wrapper (mvnw):
+6. Запустите приложение с помощью Maven Wrapper (mvnw):
 
    ```bash
    ./mvnw spring-boot:run
    ```
 
-Swagger UI доступен по URL - `http://localhost:8080/swagger-ui`
+Swagger UI доступен по URL - `http://localhost:8080/api/swagger-ui/index.html`
